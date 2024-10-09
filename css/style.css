@@ -1,0 +1,572 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face{
+    font-family: 'PlusJakartaSans-Regular';
+    src: url('../fonts/PlusJakartaSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans-Medium';
+    src: url('../fonts/PlusJakartaSans-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Heliosextc';
+    src: url('../fonts/heliosextc.otf');
+}
+
+body{
+    overflow-x: hidden; /* Скрываем прокрутку пока работает прелоадер */
+}
+
+.body{
+    overflow-x: hidden;
+}
+
+.flex{
+    display: flex;
+}
+
+
+
+
+  
+.loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Убедитесь, что прелоадер имеет высокий индекс по z, чтобы не перекрываться с контентом */
+}
+
+.particles {
+    position: absolute;
+    /* размер частиц */
+    width: 5px;
+    height: 5px;
+    /* круглая форма */
+    border-radius: 50%;
+    /* Гораздо много теней по окружности частицы, создавая иллюзию нескольких частиц. */
+    box-shadow: 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff, 0 0 #fff;
+    /* - bang: Изменяет box-shadow (анимация "взрыва").
+    - gravity: Имитирует падение вниз.
+    - position: Меняет положение. */
+    animation: bang 1s ease-out infinite backwards, gravity 1s ease-in infinite backwards, position 5s linear infinite backwards;
+}
+
+
+  /*- Определяет box-shadow изменения от начального состояния до конечного (взрыв). */
+@keyframes bang {
+    0% {
+        box-shadow: 0px 0px #fff, 0px 0px #fff, 0px 0px #fff, 0px 0px #fff, 0px 0px #fff;
+    }
+    100% {
+        box-shadow: 0px -250px hsl(0, 100%, 50%), -127px -310px hsl(120, 100%, 50%), 73px -66px hsl(240, 100%, 50%), -320px -6px hsl(360, 100%, 50%), 426px 13px hsl(72, 100%, 50%), 8px -419px hsl(144, 100%, 50%), -313px -223px hsl(216, 100%, 50%), 82px -62px hsl(288, 100%, 50%), 22px 6px hsl(60, 100%, 50%), -432px -24px hsl(132, 100%, 50%), 55px -263px hsl(204, 100%, 50%), -370px 334px hsl(276, 100%, 50%), 343px -276px hsl(48, 100%, 50%), 196px -236px hsl(120, 100%, 50%), 209px -101px hsl(192, 100%, 50%), 41px -251px hsl(264, 100%, 50%), 48px -136px hsl(36, 100%, 50%), 367px -308px hsl(108, 100%, 50%), -181px -6px hsl(180, 100%, 50%), -142px -292px hsl(252, 100%, 50%), 83px 391px hsl(324, 100%, 50%), -422px -67px hsl(96, 100%, 50%), -381px -25px hsl(168, 100%, 50%), 44px -448px hsl(240, 100%, 50%), -271px -177px hsl(312, 100%, 50%), -193px -349px hsl(24, 100%, 50%), 34px -61px hsl(96, 100%, 50%), 26px -322px hsl(168, 100%, 50%), 249px -451px hsl(240, 100%, 50%), 196px -21px hsl(312, 100%, 50%), 321px -48px hsl(72, 100%, 50%), -300px -144px hsl(144, 100%, 50%), 201px -360px hsl(216, 100%, 50%), -95px -197px hsl(288, 100%, 50%), 387px -157px hsl(36, 100%, 50%), 171px -31px hsl(108, 100%, 50%), -20px -178px hsl(180, 100%, 50%);
+    }
+}
+
+/* - Двигает частицы вниз с уменьшением прозрачности (имитирует падение под действием гравитации). */
+@keyframes gravity {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+/* Изменяет top от текущего до нижней части экрана (100vh). */
+@keyframes position {
+    100% {
+        top: 100vh;
+    }
+}
+
+
+/* MAIN */
+
+
+.main {
+    height: 100vh;
+    background-image: url('../img/header/bg.png');
+    background-color: #000000;
+}
+
+.main__menu {
+    padding-top: 76px;
+    justify-content: space-around;
+}
+
+.main__burger{
+    display: none;
+}
+
+.main__catalogy {
+    font-family: 'PlusJakartaSans-Medium';
+    color: #FFFFFF;
+    opacity: 70%;
+}
+
+.main__catalogy ul{
+    list-style-type: none;
+}
+
+.main__catalogy li{
+    margin-left: 45px;
+}
+
+.main__catalogy li:hover{
+    cursor: pointer;
+    border-bottom: 2px solid #00DBDE;
+    box-shadow: 0px 20px 10px #29B7E354;
+}
+
+.main__header {
+    max-width: 1348px;
+    height: 475px;
+    padding-top: 230px;
+    padding-left: 273px;
+    position: relative;
+    color: #FFFFFF;
+}
+
+.main__header::before{
+    content: url('../img/header/stick.png');
+    position: absolute;
+    left: 10%;
+    top: 24%;
+}
+
+.main__title {
+    font-family: 'PlusJakartaSans-Medium';
+}
+.main__text {
+    font-family: 'Heliosextc';
+}
+.main__button {
+    width: 209px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Heliosextc';
+    margin-top: 65px;
+    border: 1px #FFFFFF solid;
+    border-radius: 6px;
+    background: linear-gradient(#7A42F4,#4642F4);
+}
+
+.main__button:hover{
+    cursor: pointer;
+    border: 1px #dbd9d9 solid;
+    background: linear-gradient(#6f3bdf,#3c3ae0);
+}
+
+
+/* PROFILE */
+
+
+.profile {
+    padding-top: 100px;
+    background: linear-gradient(#130b25,#0f0c24, #070514);
+}
+.profile__container {
+    justify-content: center;
+}
+.profile__about-us {
+    padding-right: 100px;
+    color: #FFFFFF;
+}
+.profile__title {
+    font-family: 'Heliosextc', sans-serif;
+    padding-top: 16px;
+    padding-bottom: 27px;
+    font-size: 45px;
+}
+.profile__text {
+    font-family: 'PlusJakartaSans-Medium';
+    font-size: 20px;
+    line-height: 32px;
+    opacity: 80%;
+}
+.profile__chapter {
+    padding-top: 68px;
+    padding-bottom: 100px;
+}
+.profile__person img{
+    box-shadow: 0px 0px 500px #8d00d2;
+    border-radius: 9px;
+}
+
+/* ROADMAP */
+
+.roadmap {
+    height: 2000px;
+    padding-top: 216px;
+    color: #FFFFFF;
+    background-color: #090812;
+}
+.roadmap__title {
+    font-family: 'Heliosextc';
+    text-align: center;
+}
+.roadmap__title::before{
+    content: url('../img/icons/roadmap/Our\ Way.svg');
+}
+.roadmap__block-left {
+    margin-top: 100px;
+    margin-left: 327px;
+}
+.block__title {
+    font-family: 'PlusJakartaSans-Medium';
+    position: relative;
+}
+.block__list {
+    font-family: 'PlusJakartaSans-Regular';
+    margin-top: 20px;
+    opacity: 80%;
+}
+.block__list li{
+    margin-top: 13px;
+    list-style-type: none;
+}
+.block__list li::before{
+    content: url('../img/icons/roadmap/Vector.svg');
+    margin-right: 10px;
+}
+
+
+.roadmap__block-right {
+    text-align: end;
+    margin-right: 295px;
+}
+
+
+/* BRANDS */
+
+
+.brands {
+    padding-bottom: 100px;
+    color: white;
+    background-color: #140b2c;
+}
+.brands__title {
+    font-family: 'Heliosextc';
+    padding-top: 112px;
+    padding-bottom: 90px;
+    text-align: center;
+}
+.brands__title::before{
+    content: url('../img/icons/brands/No\ problem.svg');
+}
+.brands__blocks {
+    justify-content: center;
+    gap: 94px;
+}
+.brands__line {
+    width: 300px;
+    height: 6px;
+    margin-top: 67px;
+    margin-bottom: 46px;
+    box-shadow: 0px 0px 40px #00DBDE;
+    background-color: #00DBDE;
+}
+.brands__title-text {
+    font-family: 'Heliosextc';
+    text-align: center;
+    margin-bottom: 7px;
+}
+.brands__text {
+    font-family: 'PlusJakartaSans-Regular';
+    opacity: 60%;
+}
+
+
+/* SOCIAL */
+
+
+.social {
+    padding-top: 143px;
+    padding-bottom: 100px;
+    color: white;
+    background-color: #0a0813;
+}
+.social__title {
+    padding-bottom: 90px;
+    font-family: 'Heliosextc';
+    text-align: center;
+}
+
+.social__title::before{
+    content: url('../img/icons/social/Questions.svg');
+}
+
+.social__img {
+    justify-content: center;
+}
+
+
+@media (max-width: 1280px){
+    .profile__about-us{
+        text-align: center;
+        margin-left: 120px;
+    }
+    .profile__title {
+        font-size: 30px;
+    }
+    .profile__text {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .profile__person img{
+        display: none;
+    }
+
+    .brands__blocks {
+        gap: 44px;
+    }
+    .brands__line {
+        width: 200px;
+        height: 6px;
+    }
+    .brands__img img{
+        height: 250px;
+    }
+    .brands__title-text {
+        text-align: start;
+    }
+
+    .social__img img{
+        height: 260px;
+    }
+}
+
+@media (max-width: 768px){
+    .main__header {
+        padding-top: 250px;
+        padding-left: 173px;
+    }
+
+    .main__header::before{
+        top: 35%;
+    }
+
+    .main__catalogy{
+        display: none;
+    }
+   
+    .main__burger {
+        font-family: 'PlusJakartaSans-Medium';
+        display: block;
+        position: relative;
+        width: 60px;
+        height: 60px;
+        background-color: #000000;
+    }
+    
+    .main__menu-burger{
+        display: none;
+        padding-top: 30px;
+        opacity: 70%;
+        color: #FFFFFF;
+    }
+
+    .main__menu-burger ul{
+        list-style-type: none;
+    }
+
+    .main__menu-burger li{
+        padding-top: 2px;
+    }
+
+    .main__item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 3px;
+        background-color: #872eb9;
+        transition: 0.5s;
+    }
+    
+    .main__item::before, .main__item::after {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        background-color: #872eb9;
+        transition: 0.5s;
+    }
+    
+    .main__item::before {
+        top: -16px;
+    }
+    
+    .main__item::after {
+        top: 16px;
+    }
+    
+    .main__burger_active .main__item {
+        background-color: transparent;
+    }
+    
+    .main__burger_active .main__item::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+    
+    .main__burger_active .main__item::after {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    .roadmap {
+        height: 2000px;
+        padding-top: 0px;
+    }
+
+    .block__title h2{
+        font-size: 18px;
+    }
+    .block__list {
+        font-size: 12px;
+    }
+
+
+    .brands__blocks {
+        flex-direction: column;
+        align-items: center;
+        gap: 44px;
+    }
+    .brands__title-text {
+        text-align: start;
+    }
+
+    .social__img img{
+        height: 170px;
+    }
+}
+
+@media (max-width: 480px){
+    .main__header {
+        padding-top: 250px;
+        padding-left: 70px;
+    }
+
+    .main__header::before{
+        top: 35%;
+    }
+
+    .main__catalogy{
+        display: none;
+    }
+   
+    .main__title img{
+        height: 20px;
+    }
+    .main__text {
+        font-size: 15px;
+    }
+    .main__button {
+        font-size: 16px;
+        width: 159px;
+        height: 60px;
+    }
+
+    .profile__about-us{
+        margin-left: 100px;
+    }
+    .profile__title {
+        font-size: 20px;
+    }
+    .profile__text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .profile__chapter img{
+        height: 50px;
+    } 
+
+    .roadmap {
+        display: none;
+    }
+
+    .social__img img{
+        height: 120px;
+    }
+}
+
+@media (max-width: 320px){
+    .main__header {
+        padding-top: 250px;
+        padding-left: 30px;
+    }
+
+    .main__header::before{
+        top: 35%;
+        left: 0%;
+    }
+   
+    .main__menu-burger{
+        font-size: 13px;
+    }
+
+    .main__item::before, .main__item::after {
+        height: 2px;
+    }
+
+    .main__item {
+        height: 2px;
+    }
+
+    .main__title img{
+        height: 15px;
+    }
+    .main__text {
+        font-size: 12px;
+    }
+    .main__button {
+        font-size: 16px;
+        width: 109px;
+        height: 60px;
+    }
+
+    .profile__about-us{
+        margin-left: 100px;
+    }
+    .profile__title {
+        font-size: 16px;
+    }
+    .profile__text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .profile__chapter img{
+        height: 30px;
+    } 
+
+    .brands__line {
+        width: 100px;
+    }
+    .brands__img img{
+        height: 150px;
+    }
+    .brands__title-text {
+        text-align: start;
+        font-size: 14px;
+    }
+    .brands__text{
+        font-size: 12px;
+    }
+
+    .social{
+        display: none;
+    }
+}
